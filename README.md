@@ -8,5 +8,5 @@ It also has anendpoint protected by basic http auth that will provide you with a
 docker-compose up
 
 ## Endpoints
-GET / - path shows hello message with a counter on how many time the page has been visited.
-GET /tellmeasecret - this path requires basic http authentication and it will tell you a super secret.
+* GET / - path shows hello message with a counter on how many time the page has been visited.
+* GET /tellmeasecret - this path requires basic http authentication and it will tell you a super secret.
