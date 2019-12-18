@@ -7,7 +7,6 @@ metadata:
     role: master
     tier: backend
 spec:
-  clusterIP: 10.8.6.12
   ports:
     - port: 6379
       targetPort: 6379

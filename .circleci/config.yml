@@ -45,13 +45,13 @@ jobs:
           aws-region: << parameters.aws-region >>
       - kubernetes/create-or-update-resource:
           resource-file-path: "deployment/demo-app-deployment.yaml"
-          get-rollout-status: true
+          get-rollout-status: false
           resource-name: deployment/demoapp
       - kubernetes/create-or-update-resource:
           resource-file-path: "deployment/demo-app-service.yaml"
       - kubernetes/create-or-update-resource:
           resource-file-path: "deployment/demo-app-redis-deployment.yaml"
-          get-rollout-status: true
+          get-rollout-status: false
           resource-name: deployment/demoapp
       - kubernetes/create-or-update-resource:
           resource-file-path: "deployment/demo-app-redis-service.yaml"
@@ -72,12 +72,12 @@ workflows:
           # Uncomment if the repository does not yet exist
           # create-repo: true
       - aws-eks/create-cluster:
-          cluster-name: br-test-cluster
+          cluster-name: br-test-k8s-8
           aws-region: $AWS_DEFAULT_REGION
           requires:
             - build-and-push-image
       - deploy-application:
-          cluster-name: demo-app-deployment
+          cluster-name: br-test-k8s-8
           aws-region: $AWS_DEFAULT_REGION
           docker-image-name: "${AWS_ECR_URL}/br-test:${CIRCLE_SHA1}"
           version-info: "${CIRCLE_SHA1}"
